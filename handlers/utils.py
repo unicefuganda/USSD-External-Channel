@@ -9,9 +9,7 @@ from countries_plus.models import Country
 import json
 from time import sleep, time
 from core.utils import error_logger, access_logger
-from ast import literal_eval
 import re
-from random import random
 
 RESPONSE_FORMAT = [
     (1, "Is Key Value"),
@@ -125,7 +123,8 @@ class ProcessAggregatorRequest:
     still_in_flow = False
     is_session_start = None
     handler = None
-
+    
+    # define a constructor thay takes in a dict request from an aggregator api
     def __init__(self, aggregator_request):
         self.request_data = aggregator_request
 
