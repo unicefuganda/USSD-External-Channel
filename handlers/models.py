@@ -2,8 +2,6 @@ from django.db import models
 from core.utils import AuthSignature
 
 
-# Create your models here.
-
 class Handler(AuthSignature):
     aggregator = models.CharField(
         max_length=50
@@ -35,8 +33,17 @@ class Handler(AuthSignature):
         default=False
     )
     push_url = models.URLField(
-        null=True
+        null=True, blank=True
     )
+    NONE = "NONE"
+    TOKEN = "TOKEN"
+    BASIC = "BASIC"
+
+    AUTH_SCHEMES = [
+        (NONE, "NONE"),
+        (TOKEN, "TOKEN")
+    ]
+    auth_scheme = models.CharField(max_length=30, default=TOKEN)
 
     def __str__(self):
         return self.aggregator

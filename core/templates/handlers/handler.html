@@ -1,5 +1,5 @@
 {% extends "layouts/base.html" %}
-
+{% load readable%}
 {% block title %} Handlers {% endblock %}
 
 <!-- Specific Page CSS goes HERE  -->
@@ -22,7 +22,7 @@
                                         <h6 class="card-category">
                                             <div class="" style="font-weight: lighter;color:black">
                                                 Handlers are adaptors that enable this channel understand different
-                                                request-formats from different USSD aggregators, then convert them to a
+                                                request-formats from different USSD aggregator, then convert them to a
                                                 format understandable by
                                                 RapidPro.
                                             </div>
@@ -61,7 +61,7 @@
                                                         {{ handler.aggregator }}
                                                     </td>
                                                     <td class="text-center">
-                                                        {{ handler.short_code }}
+                                                        {{ handler.short_code | readable}}
                                                     </td>
                                                     <td class="text-center">
                                                         {% if handler.push_support == False %}
@@ -92,4 +92,6 @@
 {% endblock content %}
 
 <!-- Specific Page JS goes HERE  -->
-{% block javascripts %}{% endblock javascripts %}
+{% block javascripts %}
+
+{% endblock javascripts %}
